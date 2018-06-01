@@ -1,6 +1,8 @@
 
 package Client;
 
+import service.AnalizeMessage;
+
 /**
  *
  * @author CeachiBogdan

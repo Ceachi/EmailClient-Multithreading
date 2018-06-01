@@ -1,11 +1,14 @@
 package views;
 
 import Client.ConnectionController;
+import dao.User;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 
 public class LoginFrame extends javax.swing.JFrame {
-
+    
+    String userName;
+    String password;
     public LoginFrame() {
         initComponents();
         setTitle("LOGIN");
@@ -19,8 +22,8 @@ public class LoginFrame extends javax.swing.JFrame {
     
     
      private void sendCredentials() {
-        String userName = jTextField1.getText();
-        String password = jPasswordField1.getText();
+         userName = jTextField1.getText();
+         password = jPasswordField1.getText();
         
         
         // trimit mesaj
@@ -132,6 +135,8 @@ public class LoginFrame extends javax.swing.JFrame {
         String receiveMessage = ConnectionController.getInstance().receiveMessage();
         
         if(receiveMessage.equals("LOGIN SUCCESSFULL")) {
+            // creem un nou user curent
+            new User(userName);
             // go to login page
             MainFrame frame = new MainFrame();
             frame.startDisplayThread();
